@@ -7,8 +7,8 @@ import jakarta.persistence.*;
 public class Advisor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long advisorId;
+    @GeneratedValue()
+    private long advisorId;
 
     @Column(nullable = false)
     private String firstName;

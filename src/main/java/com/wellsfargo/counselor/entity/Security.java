@@ -8,11 +8,11 @@ import java.util.Date;
 public class Security {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long securityId;
+    @GeneratedValue()
+    private long securityId;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long portflioId;
+    @ManyToOne
+    private Portfolio portfolio;
 
     @Column(nullable = false)
     private String name;
@@ -21,15 +21,16 @@ public class Security {
     private String category;
 
     @Column(nullable = false)
-    private double purchasePrice;
+    private float purchasePrice;
 
     @Column(nullable = false)
-    private Date purchaseDate;
+    private String purchaseDate;
 
     @Column(nullable = false)
-    private int quantity;
+    private float quantity;
 
-    public Security(String name, String category, double purchasePrice, Date purchaseDate, int quantity) {
+    public Security(Portfolio portfolio, String name, String category, float purchasePrice, String purchaseDate, float quantity) {
+        this.portfolio = portfolio;
         this.name = name;
         this.category = category;
         this.purchasePrice = purchasePrice;
@@ -43,8 +44,12 @@ public class Security {
         return securityId;
     }
 
-    public Long getPortfolioId() {
-        return portflioId;
+    public Portfolio getPortfolio() {
+        return portfolio;
+    }
+
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
     }
 
     public void setName(String name) {
@@ -63,19 +68,19 @@ public class Security {
         return category;
     }
 
-    public void setPurchasePrice(double purchasePrice) {
+    public void setPurchasePrice(float purchasePrice) {
         this.purchasePrice = purchasePrice;
     }
 
-    public double getPurchasePrice() {
+    public float getPurchasePrice() {
         return purchasePrice;
     }
 
-    public void setPurchaseDate(Date purchaseDate) {
+    public void setPurchaseDate(String purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 
-    public Date getPurchaseDate() {
+    public String getPurchaseDate() {
         return purchaseDate;
     }
 
@@ -83,7 +88,7 @@ public class Security {
         this.quantity = quantity;
     }
 
-    public int getQuantity() {
+    public float getQuantity() {
         return quantity;
     }
 }
