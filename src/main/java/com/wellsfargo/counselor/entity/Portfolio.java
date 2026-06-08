@@ -1,19 +1,16 @@
 package com.wellsfargo.counselor.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Portfolio {
 
     @Id
-    @GeneratedValue()
-    private long portfolioId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long portfolioId;
 
-    @GeneratedValue()
-    private long clientId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long clientId;
 
     protected Portfolio() {}
 
